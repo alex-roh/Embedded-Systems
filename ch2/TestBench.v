@@ -12,10 +12,9 @@ module Testbench();
    reg A1_s, A0_s, B1_s, B0_s, C1_s, C0_s, D1_s, D0_s, S1_s, S0_s;
    wire Out1_bs, Out0_bs;
    wire Out1_gs, Out0_gs;
-   Mux_bs CompToTest_beh(A1_s, A0_s, B1_s, B0_s, C1_s, C0_s, 
-	                           D1_s, D0_s, S1_s, S0_s,Out1_bs, Out0_bs);
-   Mux_2_ss CompToTest_gate(A1_s, A0_s, B1_s, B0_s, C1_s, C0_s, 
-	                             D1_s, D0_s, S1_s, S0_s,Out1_gs, Out0_gs);
+   Mux_bs Mux_bs(A1_s, A0_s, B1_s, B0_s, C1_s, C0_s, D1_s, D0_s, S1_s, S0_s, Out1_bs, Out0_bs);
+   Mux_2_ss Mux_ss(A1_s, A0_s, B1_s, B0_s, C1_s, C0_s, D1_s, D0_s, S1_s, S0_s, Out1_gs, Out0_gs);
+   Mux_2_gate Mux_gate(A1_s, A0_s, B1_s, B0_s, C1_s, C0_s, D1_s, D0_s, S1_s, S0_s,Out1_gs, Out0_gs);
    
    initial begin
     A1_s <= 0; A0_s <= 0; 

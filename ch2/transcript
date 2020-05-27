@@ -1,0 +1,85 @@
+# Reading C:/Modeltech_pe_edu_10.4a/tcl/vsim/pref.tcl
+# OpenFile C:/Users/roheu/Documents/Github/Embedded-Systems/ch2/Ch2-Multiplexer.mpf
+# Loading project Ch2-Multiplexer
+# Compile of Mux_1_ss.v was successful.
+# Compile of Mux_2_ss.v was successful.
+# Compile of Mux_bs.v was successful.
+# Compile of TestBench.v was successful.
+# Compile of Mux_1_gate.v failed with 1 errors.
+# Compile of Mux_2_gate.v was successful.
+# 6 compiles, 1 failed with 1 error.
+# Compile of Mux_1_ss.v was successful.
+# Compile of Mux_2_ss.v was successful.
+# Compile of Mux_bs.v was successful.
+# Compile of TestBench.v was successful.
+# Compile of Mux_1_gate.v failed with 1 errors.
+# Compile of Mux_2_gate.v was successful.
+# 6 compiles, 1 failed with 1 error.
+# Compile of Mux_1_ss.v was successful.
+# Compile of Mux_2_ss.v was successful.
+# Compile of Mux_bs.v was successful.
+# Compile of TestBench.v was successful.
+# Compile of Mux_1_gate.v failed with 1 errors.
+# Compile of Mux_2_gate.v was successful.
+# 6 compiles, 1 failed with 1 error.
+# Compile of Mux_1_gate.v failed with 1 errors.
+# Compile of Mux_1_gate.v was successful.
+# Compile of Mux_1_ss.v was successful.
+# Compile of Mux_2_ss.v was successful.
+# Compile of Mux_bs.v was successful.
+# Compile of TestBench.v was successful.
+# Compile of Mux_1_gate.v was successful.
+# Compile of Mux_2_gate.v was successful.
+# 6 compiles, 0 failed with no errors.
+vsim -gui ch2-multiplexer-lib.Testbench
+# //  ModelSim PE Student Edition 10.4a Apr  7 2015 
+# //
+# //  Copyright 1991-2015 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND PROPRIETARY INFORMATION
+# //  WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS
+# //  LICENSORS AND IS SUBJECT TO LICENSE TERMS.
+# //  THIS DOCUMENT CONTAINS TRADE SECRETS AND COMMERCIAL OR FINANCIAL
+# //  INFORMATION THAT ARE PRIVILEGED, CONFIDENTIAL, AND EXEMPT FROM
+# //  DISCLOSURE UNDER THE FREEDOM OF INFORMATION ACT, 5 U.S.C. SECTION 552.
+# //  FURTHERMORE, THIS INFORMATION IS PROHIBITED FROM DISCLOSURE UNDER
+# //  THE TRADE SECRETS ACT, 18 U.S.C. SECTION 1905.
+# //
+# // NOT FOR CORPORATE OR PRODUCTION USE.
+# // THE ModelSim PE Student Edition IS NOT A SUPPORTED PRODUCT.
+# // FOR HIGHER EDUCATION PURPOSES ONLY
+# //
+# vsim -gui C:\Users\roheu\Documents\Github\Embedded-Systems\ch2\Ch2-Multiplexer.mpf 
+# Start time: 17:13:20 on May 27,2020
+# Loading ch2-multiplexer-lib.Testbench
+# Loading ch2-multiplexer-lib.Mux_bs
+# Loading ch2-multiplexer-lib.Mux_2_ss
+# Loading ch2-multiplexer-lib.Mux_1_ss
+# Loading ch2-multiplexer-lib.Mux_2_gate
+# ** Error: (vsim-3033) C:/Users/roheu/Documents/Github/Embedded-Systems/ch2/Mux_2_gate.v(10): Instantiation of 'Mux_1_gate' failed. The design unit was not found.
+#    Time: 0 ns  Iteration: 0  Instance: /Testbench/Mux_gate File: C:/Users/roheu/Documents/Github/Embedded-Systems/ch2/Mux_2_gate.v
+#         Searched libraries:
+#             C:/Users/roheu/Documents/Github/Embedded-Systems/ch2/ch2-multiplexer-lib
+# ** Error: (vsim-3033) C:/Users/roheu/Documents/Github/Embedded-Systems/ch2/Mux_2_gate.v(11): Instantiation of 'Mux_1_gate' failed. The design unit was not found.
+#    Time: 0 ns  Iteration: 0  Instance: /Testbench/Mux_gate File: C:/Users/roheu/Documents/Github/Embedded-Systems/ch2/Mux_2_gate.v
+#         Searched libraries:
+#             C:/Users/roheu/Documents/Github/Embedded-Systems/ch2/ch2-multiplexer-lib
+# Error loading design
+# Compile of Mux_1_gate.v was successful.
+vsim -gui ch2-multiplexer-lib.Testbench
+# vsim 
+# Start time: 17:13:43 on May 27,2020
+# Loading ch2-multiplexer-lib.Testbench
+# Loading ch2-multiplexer-lib.Mux_bs
+# Loading ch2-multiplexer-lib.Mux_2_ss
+# Loading ch2-multiplexer-lib.Mux_1_ss
+# Loading ch2-multiplexer-lib.Mux_2_gate
+# Loading ch2-multiplexer-lib.Mux_1_gate
+add wave sim:/Testbench/*
+add wave sim:/Testbench/Mux_bs/*
+add wave sim:/Testbench/Mux_ss/*
+add wave sim:/Testbench/Mux_gate/*
+run -all
+# End time: 17:15:37 on May 27,2020, Elapsed time: 0:01:54
+# Errors: 0, Warnings: 0
