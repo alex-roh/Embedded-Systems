@@ -1,0 +1,98 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/Modeltech_pe_edu_10.4a/examples
+vMux_1_ss
+Z0 !s110 1590565551
+!i10b 1
+!s100 UnGc=BfCWQRO`O2>7^2Lo0
+I7EoX95<c05W:cUnXInZo50
+Z1 VDg1SIo80bB@j0V0VzS_@n1
+Z2 dC:/Users/roheu/Documents/Github/Embedded-Systems/ch2
+w1590565345
+8C:/Users/roheu/Documents/Github/Embedded-Systems/ch2/Mux_1_ss.v
+FC:/Users/roheu/Documents/Github/Embedded-Systems/ch2/Mux_1_ss.v
+L0 5
+Z3 OP;L;10.4a;61
+r1
+!s85 0
+31
+Z4 !s108 1590565551.000000
+!s107 C:/Users/roheu/Documents/Github/Embedded-Systems/ch2/Mux_1_ss.v|
+!s90 -reportprogress|300|-work|ch2-multiplexer-lib|-stats=none|C:/Users/roheu/Documents/Github/Embedded-Systems/ch2/Mux_1_ss.v|
+!s101 -O0
+!i113 1
+Z5 o-work ch2-multiplexer-lib -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact -O0
+n@mux_1_ss
+vMux_2_ss
+R0
+!i10b 1
+!s100 E8^14iC;aBk1EhJ1QkUj90
+I@n49kY5Sb]DlIO`a44kNX0
+R1
+R2
+w1590565476
+8C:/Users/roheu/Documents/Github/Embedded-Systems/ch2/Mux_2_ss.v
+FC:/Users/roheu/Documents/Github/Embedded-Systems/ch2/Mux_2_ss.v
+L0 5
+R3
+r1
+!s85 0
+31
+R4
+!s107 C:/Users/roheu/Documents/Github/Embedded-Systems/ch2/Mux_2_ss.v|
+!s90 -reportprogress|300|-work|ch2-multiplexer-lib|-stats=none|C:/Users/roheu/Documents/Github/Embedded-Systems/ch2/Mux_2_ss.v|
+!s101 -O0
+!i113 1
+R5
+n@mux_2_ss
+vMux_bs
+R0
+!i10b 1
+!s100 D?3F>`caZagoIXm:1]Z`i1
+IfPS>UJ7BS`X<JaThCi;@N1
+R1
+R2
+w1590565336
+8C:/Users/roheu/Documents/Github/Embedded-Systems/ch2/Mux_bs.v
+FC:/Users/roheu/Documents/Github/Embedded-Systems/ch2/Mux_bs.v
+L0 5
+R3
+r1
+!s85 0
+31
+R4
+!s107 C:/Users/roheu/Documents/Github/Embedded-Systems/ch2/Mux_bs.v|
+!s90 -reportprogress|300|-work|ch2-multiplexer-lib|-stats=none|C:/Users/roheu/Documents/Github/Embedded-Systems/ch2/Mux_bs.v|
+!s101 -O0
+!i113 1
+R5
+n@mux_bs
+vTestbench
+R0
+!i10b 1
+!s100 ]ADfF7BiC;[U956]5AdG]3
+I]WV=5H13JfCd>;fEN]kHO3
+R1
+R2
+w1590565323
+8C:/Users/roheu/Documents/Github/Embedded-Systems/ch2/TestBench.v
+FC:/Users/roheu/Documents/Github/Embedded-Systems/ch2/TestBench.v
+L0 10
+R3
+r1
+!s85 0
+31
+R4
+!s107 C:/Users/roheu/Documents/Github/Embedded-Systems/ch2/TestBench.v|
+!s90 -reportprogress|300|-work|ch2-multiplexer-lib|-stats=none|C:/Users/roheu/Documents/Github/Embedded-Systems/ch2/TestBench.v|
+!s101 -O0
+!i113 1
+R5
+n@testbench
