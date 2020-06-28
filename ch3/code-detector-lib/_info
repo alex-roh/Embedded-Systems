@@ -1,0 +1,54 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/Users/roheu/Documents/Github/Embedded-Systems/ch2
+vCodeDetector
+!s110 1591687100
+!i10b 1
+!s100 c<?=MGV48<he_ikCz]DFJ0
+I3]jYj5MdZTVc5i]QljdPD1
+Z0 VDg1SIo80bB@j0V0VzS_@n1
+Z1 dC:/Users/roheu/Documents/Github/Embedded-Systems/ch3
+w1591685924
+8C:/Users/roheu/Documents/Github/Embedded-Systems/ch3/Code_detector.v
+FC:/Users/roheu/Documents/Github/Embedded-Systems/ch3/Code_detector.v
+L0 3
+Z2 OP;L;10.4a;61
+r1
+!s85 0
+31
+!s108 1591687100.000000
+!s107 C:/Users/roheu/Documents/Github/Embedded-Systems/ch3/Code_detector.v|
+!s90 -reportprogress|300|-work|code-detector-lib|-stats=none|C:/Users/roheu/Documents/Github/Embedded-Systems/ch3/Code_detector.v|
+!s101 -O0
+!i113 1
+Z3 o-work code-detector-lib -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact -O0
+n@code@detector
+vTestBench
+!s110 1591173278
+!i10b 1
+!s100 9FR@jHM5z;76PWi6>z7K:0
+IUKQZ>[@P:UdWz]3EcXK0I3
+R0
+R1
+w1591173253
+8C:/Users/roheu/Documents/Github/Embedded-Systems/ch3/TestBench.v
+FC:/Users/roheu/Documents/Github/Embedded-Systems/ch3/TestBench.v
+L0 3
+R2
+r1
+!s85 0
+31
+!s108 1591173278.000000
+!s107 C:/Users/roheu/Documents/Github/Embedded-Systems/ch3/TestBench.v|
+!s90 -reportprogress|300|-work|code-detector-lib|-stats=none|C:/Users/roheu/Documents/Github/Embedded-Systems/ch3/TestBench.v|
+!s101 -O0
+!i113 1
+R3
+n@test@bench

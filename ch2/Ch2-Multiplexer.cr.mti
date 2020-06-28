@@ -1,23 +1,16 @@
-C:/Users/roheu/Documents/Github/Embedded-Systems/ch2/TestBench.v {1 {vlog -work ch2-multiplexer-lib -stats=none C:/Users/roheu/Documents/Github/Embedded-Systems/ch2/TestBench.v
-Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
--- Compiling module Testbench
-
-Top level modules:
-	Testbench
-
-} {} {}} C:/Users/roheu/Documents/Github/Embedded-Systems/ch2/Mux_2_ss.v {1 {vlog -work ch2-multiplexer-lib -stats=none C:/Users/roheu/Documents/Github/Embedded-Systems/ch2/Mux_2_ss.v
+C:/Users/roheu/Documents/Github/Embedded-Systems/ch2/Mux_2_ss.v {1 {vlog -work ch2-multiplexer-lib -stats=none C:/Users/roheu/Documents/Github/Embedded-Systems/ch2/Mux_2_ss.v
 Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
 -- Compiling module Mux_2_ss
 
 Top level modules:
 	Mux_2_ss
 
-} {} {}} C:/Users/roheu/Documents/Github/Embedded-Systems/ch2/Mux_1_gate.v {1 {vlog -work work -stats=none C:/Users/roheu/Documents/Github/Embedded-Systems/ch2/Mux_1_gate.v
+} {} {}} C:/Users/roheu/Documents/Github/Embedded-Systems/ch2/TestBench.v {1 {vlog -work ch2-multiplexer-lib -stats=none C:/Users/roheu/Documents/Github/Embedded-Systems/ch2/TestBench.v
 Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
--- Compiling module Mux_1_gate
+-- Compiling module Testbench
 
 Top level modules:
-	Mux_1_gate
+	Testbench
 
 } {} {}} C:/Users/roheu/Documents/Github/Embedded-Systems/ch2/Mux_bs.v {1 {vlog -work ch2-multiplexer-lib -stats=none C:/Users/roheu/Documents/Github/Embedded-Systems/ch2/Mux_bs.v
 Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
@@ -26,12 +19,12 @@ Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 
 Top level modules:
 	Mux_bs
 
-} {} {}} C:/Users/roheu/Documents/Github/Embedded-Systems/ch2/Mux_2_gate.v {1 {vlog -work work -stats=none C:/Users/roheu/Documents/Github/Embedded-Systems/ch2/Mux_2_gate.v
+} {} {}} C:/Users/roheu/Documents/Github/Embedded-Systems/ch2/Mux_1_gate.v {1 {vlog -work work -stats=none C:/Users/roheu/Documents/Github/Embedded-Systems/ch2/Mux_1_gate.v
 Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
--- Compiling module Mux_2_gate
+-- Compiling module Mux_1_gate
 
 Top level modules:
-	Mux_2_gate
+	Mux_1_gate
 
 } {} {}} C:/Users/roheu/Documents/Github/Embedded-Systems/ch2/Mux_1_ss.v {1 {vlog -work ch2-multiplexer-lib -stats=none C:/Users/roheu/Documents/Github/Embedded-Systems/ch2/Mux_1_ss.v
 Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
@@ -39,5 +32,12 @@ Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 
 
 Top level modules:
 	Mux_1_ss
+
+} {} {}} C:/Users/roheu/Documents/Github/Embedded-Systems/ch2/Mux_2_gate.v {1 {vlog -work work -stats=none C:/Users/roheu/Documents/Github/Embedded-Systems/ch2/Mux_2_gate.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module Mux_2_gate
+
+Top level modules:
+	Mux_2_gate
 
 } {} {}}

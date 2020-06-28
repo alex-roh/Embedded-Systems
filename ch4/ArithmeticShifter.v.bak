@@ -1,0 +1,40 @@
+`timescale 1 ns/1 ns
+
+module ArithmeticShifter(Sh_dir, Sh_amt, D_in, D_out);
+
+	input Sh_dir;
+	input [31:0] Sh_amt;
+	input signed [31:0] D_in;
+	output reg [31:0] D_out;
+	integer I, J;
+	reg Temp;
+
+	always @(Sh_amt, Sh_dir, D_in) begin
+		Temp = D_in[31];
+		//  shift right
+		if(Sh_dir == 1'b0) begin
+			Temp = D_in[31];
+			for(J = 0; J < Sh_amt; J = J + 1'b1) begin
+				for(I = 0; I <= 32'h0000_001E; I = I + 1'b1) begin
+					D_out[I] <= D_in[I + 1];
+					$display("J: %d, I: %d, %4b_%4b_%4b_%4b_%4b_%4b_%4b_%4b", J, I, 
+							D_out[31:28], D_out[27:24], D_out[23:20], D_out[19:16], D_out[15:12],
+							D_out[11:8], D_out[7:4], D_out[3:0]);
+				end
+			end
+		end
+		// shift left
+		else if(Sh_dir == 1'b1) begin
+			for(J = 0; J < Sh_amt; J = J + 1'b1) begin
+				for(I = 32'h0000_001F; I >= 0; I = I + 1'b1) begin
+					if(I == 0)
+						D_out[0] <= 0;
+					else 
+						D_out[I] <= D_in[I - 1];
+				end
+			end
+		end
+		D_out[31] = Temp;
+	end
+
+endmodule

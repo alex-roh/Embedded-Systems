@@ -1,0 +1,76 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/Users/roheu/Documents/Github/Embedded-Systems/ch3
+vArithmeticShifter
+!s110 1591708740
+!i10b 1
+!s100 CO[GDkN<9V;?0Yk2La?[K1
+I^443Ud2Q>bHJLOfK4jGO^1
+Z0 VDg1SIo80bB@j0V0VzS_@n1
+Z1 dC:/Users/roheu/Documents/Github/Embedded-Systems/ch4
+w1591708736
+8C:\Users\roheu\Documents\Github\Embedded-Systems\ch4\ArithmeticShifter.v
+FC:\Users\roheu\Documents\Github\Embedded-Systems\ch4\ArithmeticShifter.v
+L0 3
+Z2 OP;L;10.4a;61
+r1
+!s85 0
+31
+!s108 1591708740.000000
+!s107 C:\Users\roheu\Documents\Github\Embedded-Systems\ch4\ArithmeticShifter.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:\Users\roheu\Documents\Github\Embedded-Systems\ch4\ArithmeticShifter.v|
+!s101 -O0
+!i113 1
+Z3 o-work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact -O0
+n@arithmetic@shifter
+vBarrelShifter
+!s110 1591601955
+!i10b 1
+!s100 ga4lM8zj0Z9mCEF8FQ_3C0
+I8eM8ZDl`8Nz9CKVTWA5zA3
+R0
+R1
+w1591601951
+8C:/Users/roheu/Documents/Github/Embedded-Systems/ch4/BarrelShifter.v
+FC:/Users/roheu/Documents/Github/Embedded-Systems/ch4/BarrelShifter.v
+L0 3
+R2
+r1
+!s85 0
+31
+!s108 1591601955.000000
+!s107 define.h|C:/Users/roheu/Documents/Github/Embedded-Systems/ch4/BarrelShifter.v|
+!s90 -reportprogress|300|-work|barrel-shifter-lib|-stats=none|C:/Users/roheu/Documents/Github/Embedded-Systems/ch4/BarrelShifter.v|
+!s101 -O0
+!i113 1
+o-work barrel-shifter-lib -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact -O0
+n@barrel@shifter
+vTestBench
+!s110 1591708742
+!i10b 1
+!s100 hhi[mjh:I>;fcLm8C=DXV2
+IRMQHW04Ml_<LQ4nm;7gbQ0
+R0
+R1
+w1591707960
+8C:\Users\roheu\Documents\Github\Embedded-Systems\ch4\TestBench.v
+FC:\Users\roheu\Documents\Github\Embedded-Systems\ch4\TestBench.v
+L0 3
+R2
+r1
+!s85 0
+31
+!s108 1591708742.000000
+!s107 C:\Users\roheu\Documents\Github\Embedded-Systems\ch4\TestBench.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:\Users\roheu\Documents\Github\Embedded-Systems\ch4\TestBench.v|
+!s101 -O0
+!i113 1
+R3
+n@test@bench

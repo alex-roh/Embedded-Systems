@@ -1,0 +1,15 @@
+C:/Users/roheu/Documents/Github/Embedded-Systems/ch3/Code_detector.v {1 {vlog -work code-detector-lib -stats=none C:/Users/roheu/Documents/Github/Embedded-Systems/ch3/Code_detector.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module CodeDetector
+
+Top level modules:
+	CodeDetector
+
+} {} {}} C:/Users/roheu/Documents/Github/Embedded-Systems/ch3/TestBench.v {1 {vlog -work code-detector-lib -stats=none C:/Users/roheu/Documents/Github/Embedded-Systems/ch3/TestBench.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module TestBench
+
+Top level modules:
+	TestBench
+
+} {} {}}

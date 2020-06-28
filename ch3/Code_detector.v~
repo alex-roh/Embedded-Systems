@@ -7,7 +7,6 @@ module CodeDetector(S, In, U, Clk, Reset);
 	output reg U;
 	input Clk, Reset;
  
-	// State encoding
 	parameter Wait = 0, Start = 1,
 		  Red1 = 2, Blue = 3,
 		  Green = 4, Red2 = 5;

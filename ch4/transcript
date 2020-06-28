@@ -1,0 +1,181 @@
+# Reading C:/Modeltech_pe_edu_10.4a/tcl/vsim/pref.tcl
+# OpenFile C:/Users/roheu/Documents/Github/Embedded-Systems/ch4/Barrel-Shifter.mpf
+# Loading project Barrel-Shifter
+# Compile of ArithmeticShifter.v failed with 7 errors.
+# Compile of ArithmeticShifter.v failed with 7 errors.
+# Compile of ArithmeticShifter.v was successful.
+# Compile of TestBench.v failed with 2 errors.
+# Compile of TestBench.v failed with 7 errors.
+# Compile of TestBench.v failed with 7 errors.
+# Compile of TestBench.v failed with 7 errors.
+# Compile of TestBench.v was successful.
+vsim -gui barrel-shifter-lib.TestBench
+# //  ModelSim PE Student Edition 10.4a Apr  7 2015 
+# //
+# //  Copyright 1991-2015 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND PROPRIETARY INFORMATION
+# //  WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS
+# //  LICENSORS AND IS SUBJECT TO LICENSE TERMS.
+# //  THIS DOCUMENT CONTAINS TRADE SECRETS AND COMMERCIAL OR FINANCIAL
+# //  INFORMATION THAT ARE PRIVILEGED, CONFIDENTIAL, AND EXEMPT FROM
+# //  DISCLOSURE UNDER THE FREEDOM OF INFORMATION ACT, 5 U.S.C. SECTION 552.
+# //  FURTHERMORE, THIS INFORMATION IS PROHIBITED FROM DISCLOSURE UNDER
+# //  THE TRADE SECRETS ACT, 18 U.S.C. SECTION 1905.
+# //
+# // NOT FOR CORPORATE OR PRODUCTION USE.
+# // THE ModelSim PE Student Edition IS NOT A SUPPORTED PRODUCT.
+# // FOR HIGHER EDUCATION PURPOSES ONLY
+# //
+# vsim -gui C:\Users\roheu\Documents\Github\Embedded-Systems\ch4\Barrel-Shifter.mpf 
+# Start time: 19:07:22 on Jun 09,2020
+# Loading barrel-shifter-lib.TestBench
+# Loading barrel-shifter-lib.ArithmeticShifter
+run -all
+# 1.Shift-Right Operation Test with Negative Value!
+# shift-right with amount          1 is 00000000000000000000000000000000
+quit -sim
+# Compile of TestBench.v was successful.
+# Compile of ArithmeticShifter.v was successful.
+vsim -gui barrel-shifter-lib.TestBench
+# vsim 
+# Start time: 19:16:44 on Jun 09,2020
+# Loading barrel-shifter-lib.TestBench
+# Loading barrel-shifter-lib.ArithmeticShifter
+# Load canceled
+run -all
+# 1.Shift-Right Operation Test with Negative Value!
+# shift-right with amount          1 is 0000_0000_0000_0000_0000_0000_0000_0000
+quit -sim
+# Compile of TestBench.v was successful.
+vsim -gui barrel-shifter-lib.TestBench
+# vsim 
+# Start time: 19:19:54 on Jun 09,2020
+# Loading barrel-shifter-lib.TestBench
+# Loading barrel-shifter-lib.ArithmeticShifter
+run -all
+# 1.Shift-Right Operation Test with Negative Value!
+# shift-right with amount          0 is xxxx_xxxx_xxxx_xxxx_xxxx_xxxx_xxxx_xxxx
+# shift-right with amount          1 is 0000_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount          2 is 0000_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount          3 is 0000_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount          4 is 0000_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount          5 is 0000_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount          6 is 0000_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount          7 is 0000_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount          8 is 0000_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount          9 is 0000_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount         10 is 0000_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount         11 is 0000_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount         12 is 0000_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount         13 is 0000_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount         14 is 0000_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount         15 is 0000_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount         16 is 0000_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount         17 is 0000_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount         18 is 0000_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount         19 is 0000_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount         20 is 0000_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount         21 is 0000_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount         22 is 0000_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount         23 is 0000_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount         24 is 0000_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount         25 is 0000_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount         26 is 0000_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount         27 is 0000_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount         28 is 0000_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount         29 is 0000_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount         30 is 0000_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount         31 is 0000_0000_0000_0000_0000_0000_0000_0000
+quit -sim
+# Compile of TestBench.v was successful.
+vsim -gui barrel-shifter-lib.TestBench
+# vsim 
+# Start time: 19:24:21 on Jun 09,2020
+# Loading barrel-shifter-lib.TestBench
+# Loading barrel-shifter-lib.ArithmeticShifter
+run -all
+# 1.Shift-Right Operation Test with Negative Value!
+# shift-right with amount          0 is xxxx_xxxx_xxxx_xxxx_xxxx_xxxx_xxxx_xxxx
+# shift-right with amount          1 is 1110_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount          2 is 1110_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount          3 is 1110_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount          4 is 1110_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount          5 is 1110_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount          6 is 1110_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount          7 is 1110_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount          8 is 1110_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount          9 is 1110_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount         10 is 1110_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount         11 is 1110_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount         12 is 1110_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount         13 is 1110_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount         14 is 1110_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount         15 is 1110_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount         16 is 1110_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount         17 is 1110_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount         18 is 1110_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount         19 is 1110_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount         20 is 1110_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount         21 is 1110_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount         22 is 1110_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount         23 is 1110_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount         24 is 1110_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount         25 is 1110_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount         26 is 1110_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount         27 is 1110_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount         28 is 1110_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount         29 is 1110_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount         30 is 1110_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount         31 is 1110_0000_0000_0000_0000_0000_0000_0000
+quit -sim
+# Compile of ArithmeticShifter.v was successful.
+# Compile of TestBench.v was successful.
+vsim -gui barrel-shifter-lib.ArithmeticShifter
+# vsim 
+# Start time: 19:29:09 on Jun 09,2020
+# Loading barrel-shifter-lib.ArithmeticShifter
+run -all
+run -all
+quit -sim
+vsim -gui barrel-shifter-lib.TestBench
+# vsim 
+# Start time: 19:43:54 on Jun 09,2020
+# Loading barrel-shifter-lib.TestBench
+# Loading barrel-shifter-lib.ArithmeticShifter
+run -all
+# 1.Shift-Right Operation Test with Negative Value!
+# shift-right with amount          1 is 1110_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount          2 is 1110_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount          3 is 1110_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount          4 is 1110_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount          5 is 1110_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount          6 is 1110_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount          7 is 1110_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount          8 is 1110_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount          9 is 1110_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount         10 is 1110_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount         11 is 1110_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount         12 is 1110_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount         13 is 1110_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount         14 is 1110_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount         15 is 1110_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount         16 is 1110_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount         17 is 1110_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount         18 is 1110_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount         19 is 1110_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount         20 is 1110_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount         21 is 1110_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount         22 is 1110_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount         23 is 1110_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount         24 is 1110_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount         25 is 1110_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount         26 is 1110_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount         27 is 1110_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount         28 is 1110_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount         29 is 1110_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount         30 is 1110_0000_0000_0000_0000_0000_0000_0000
+# shift-right with amount         31 is 1110_0000_0000_0000_0000_0000_0000_0000
+# End time: 19:52:40 on Jun 09,2020, Elapsed time: 0:08:46
+# Errors: 0, Warnings: 0

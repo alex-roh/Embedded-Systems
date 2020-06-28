@@ -1,0 +1,98 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/Users/roheu/Documents/Github/Embedded-Systems/ch4
+vModifiedSAD
+!s110 1591901935
+!i10b 1
+!s100 @?c`R3g6gnMkVUHONXEbR3
+IHR;dMWDz<H[MKDT<Gg6A=3
+Z0 VDg1SIo80bB@j0V0VzS_@n1
+Z1 dC:/Users/roheu/Documents/Github/Embedded-Systems/ch5
+w1591901931
+8C:\Users\roheu\Documents\Github\Embedded-Systems\ch5\ModifiedSAD.v
+FC:\Users\roheu\Documents\Github\Embedded-Systems\ch5\ModifiedSAD.v
+L0 3
+Z2 OP;L;10.4a;61
+r1
+!s85 0
+31
+!s108 1591901935.000000
+!s107 C:\Users\roheu\Documents\Github\Embedded-Systems\ch5\ModifiedSAD.v|
+!s90 -reportprogress|300|-work|modified-sad-lib|-stats=none|C:\Users\roheu\Documents\Github\Embedded-Systems\ch5\ModifiedSAD.v|
+!s101 -O0
+!i113 1
+Z3 o-work modified-sad-lib -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact -O0
+n@modified@s@a@d
+vSRAM_operand
+!s110 1591901939
+!i10b 1
+!s100 <O1L2YfQYP<C>HGR^VR1j1
+ISddnLb0ncCMbC^a4mkOhX0
+R0
+R1
+w1591901785
+8C:\Users\roheu\Documents\Github\Embedded-Systems\ch5\SRAM_operand.v
+FC:\Users\roheu\Documents\Github\Embedded-Systems\ch5\SRAM_operand.v
+L0 3
+R2
+r1
+!s85 0
+31
+!s108 1591901939.000000
+!s107 C:\Users\roheu\Documents\Github\Embedded-Systems\ch5\SRAM_operand.v|
+!s90 -reportprogress|300|-work|modified-sad-lib|-stats=none|C:\Users\roheu\Documents\Github\Embedded-Systems\ch5\SRAM_operand.v|
+!s101 -O0
+!i113 1
+R3
+n@s@r@a@m_operand
+vSRAM_result
+!s110 1591901942
+!i10b 1
+!s100 WTlNXo8^KYiS;`ED93C2o1
+ImPSQ`m]3610iJ=]Xb_b8z3
+R0
+R1
+w1591901811
+8C:/Users/roheu/Documents/Github/Embedded-Systems/ch5/SRAM_result.v
+FC:/Users/roheu/Documents/Github/Embedded-Systems/ch5/SRAM_result.v
+L0 4
+R2
+r1
+!s85 0
+31
+!s108 1591901942.000000
+!s107 C:/Users/roheu/Documents/Github/Embedded-Systems/ch5/SRAM_result.v|
+!s90 -reportprogress|300|-work|modified-sad-lib|-stats=none|C:/Users/roheu/Documents/Github/Embedded-Systems/ch5/SRAM_result.v|
+!s101 -O0
+!i113 1
+R3
+n@s@r@a@m_result
+vTestbench
+!s110 1591902046
+!i10b 1
+!s100 DdPoi^@XlTCMINd7VhJcB3
+Im_C4XB4C`aCJ5fcjZ4Xn]2
+R0
+R1
+w1591902043
+8C:\Users\roheu\Documents\Github\Embedded-Systems\ch5\Testbench.v
+FC:\Users\roheu\Documents\Github\Embedded-Systems\ch5\Testbench.v
+L0 3
+R2
+r1
+!s85 0
+31
+!s108 1591902046.000000
+!s107 C:\Users\roheu\Documents\Github\Embedded-Systems\ch5\Testbench.v|
+!s90 -reportprogress|300|-work|modified-sad-lib|-stats=none|C:\Users\roheu\Documents\Github\Embedded-Systems\ch5\Testbench.v|
+!s101 -O0
+!i113 1
+R3
+n@testbench

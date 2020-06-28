@@ -1,0 +1,61 @@
+`timescale 1 ns/1 ns
+
+module Testbench();
+
+	// module inputs
+	reg Go_s;
+	reg Clk_s, Rst_s, Rst_m;
+   	wire [7:0] A_in_s, B_in_s; // dummy wire
+	wire [7:0] Data_in_A_s, Data_in_B_s;
+	
+        // module outputs
+   	wire [14:0] A_Addr_s, B_Addr_s;
+	wire [6:0] C_Addr_s;
+   	wire AB_En_s, AB_Rd_s, C_En_s, C_Rw_s; 
+   	wire [31:0] Sad_Out_s, Data_Out_s, Temp_in_s;
+   	wire Done_s;
+
+	// internal variables
+	reg [31:0] SRAM_Temp [0:127];
+	integer Index;
+
+	// module instantiation
+	ModifiedSAD CompToTest(A_in_s, B_in_s, Rst_s, Go_s, Sad_Out_s, 
+					A_Addr_s, B_Addr_s, AB_En_s, AB_Rd_s, C_Addr_s, C_En_s, C_Wr_s, Clk_s, Done_s);											 // ??? ?? ? ??? ??? ?
+  	SRAM_operand SRAM_A(Data_in_A_s, A_Addr_s, AB_Rd_s, AB_En_s, Clk_s, Rst_m, A_in_s); // rst_m
+  	SRAM_operand SRAM_B(Data_in_B_s, B_Addr_s, AB_Rd_s, AB_En_s, Clk_s, Rst_m, B_in_s); // rst_m
+	SRAM_result SRAM_C(Sad_Out_s, C_Addr_s, C_Rw_s, C_En_s, Clk_s, Rst_s, Data_Out_s);	
+
+	// Clock Procedure
+	always begin
+		Clk_s <= 1'b0; #10;
+		Clk_s <= 1'b1; #10;
+	end
+
+	// Initialize Arrays
+	initial $readmemh("MemA.txt", SRAM_A.Memory);
+	initial $readmemh("MemB.txt", SRAM_B.Memory);
+	initial $readmemh("sw_result.txt", SRAM_Temp);
+
+	// Vector Procedure
+	initial begin
+		Rst_s <= 1'b1; // module initialize
+      		Rst_m <= 1'b0; // must not reset memory : 0
+		Go_s <= 1'b0;
+		@(posedge Clk_s);
+		Rst_s <= 1'b0; // modlue initialize end 
+		Go_s <= 1'b1;
+		@(posedge Clk_s); // module starts
+		Go_s <= 1'b0;
+		while(Done_s != 1'b1) begin
+			@(posedge Clk_s);	
+		end
+		for(Index = 0; Index < 128; Index = Index + 1) begin
+			if (SRAM_R.Memory[Index] != SRAM_Temp[Index]) 
+         			$display("%d. SAD failed with %x from HW -- should equal %x from SW.", Index, SRAM_R.Memory[Index], SRAM_Temp[Index]);
+      			else 
+	 			$display("%d. SAD is %x from HW -- It is equal to %x from SW", Index, SRAM_R.Memory[Index], SRAM_Temp[Index]);
+		end
+		$stop;
+   	end
+endmodule

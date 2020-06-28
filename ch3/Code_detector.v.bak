@@ -1,13 +1,12 @@
 `timescale 1 ns/1 ns
 
 module CodeDetector(S, In, U, Clk, Reset);
-
+    
 	input S;
 	input [2:0] In;
 	output reg U;
 	input Clk, Reset;
  
-	// State encoding
 	parameter Wait = 0, Start = 1,
 		  Red1 = 2, Blue = 3,
 		  Green = 4, Red2 = 5;
@@ -90,5 +89,5 @@ module CodeDetector(S, In, U, Clk, Reset);
 		end
 		endcase
 	end
+
 endmodule
-  
