@@ -59,10 +59,10 @@ module Testbench();
 			end
 		end
 		if(Error_Flag == 1'b1) begin
-			$display("Hardware Failed")
+			$display("Hardware Failed");
 		end
 		else begin
-			$display("Hardware Succeeded")
+			$display("Hardware Succeeded");
 		end
 		$stop;
 	end

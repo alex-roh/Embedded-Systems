@@ -1,5 +1,5 @@
 `timescale 1 ns/1 ns
-`define A_WIDTH 16
+`define A_WIDTH 13
 `define D_WIDTH 8
 
 module Testbench();
@@ -55,7 +55,7 @@ module Testbench();
 		for(Index=0;Index<(2**`A_WIDTH);Index=Index+1) begin
 			if(P_Memory.Memory[Index] != Ref[Index]) begin
 				Error_Flag <= 1'b1;
-				#5; $display("%d. failed with : %x from HW -- should equal to %x from SW.", Index, P_Memory.Memory[Index], Ref[Index]);
+				// #5; $display("%d. failed with : %x from HW -- should equal to %x from SW.", Index, P_Memory.Memory[Index], Ref[Index]);
 			end
 		end
 		if(Error_Flag == 1'b1) begin

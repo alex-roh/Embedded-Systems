@@ -1,0 +1,55 @@
+# Reading C:/Modeltech_pe_edu_10.4a/tcl/vsim/pref.tcl
+# OpenFile {C:/Users/roheu/Documents/Github/Embedded-Systems/Final Projects - 1_pd_SRAM/ShortestPath.mpf}
+# Loading project ShortestPath
+vsim -gui work.Testbench
+# //  ModelSim PE Student Edition 10.4a Apr  7 2015 
+# //
+# //  Copyright 1991-2015 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND PROPRIETARY INFORMATION
+# //  WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS
+# //  LICENSORS AND IS SUBJECT TO LICENSE TERMS.
+# //  THIS DOCUMENT CONTAINS TRADE SECRETS AND COMMERCIAL OR FINANCIAL
+# //  INFORMATION THAT ARE PRIVILEGED, CONFIDENTIAL, AND EXEMPT FROM
+# //  DISCLOSURE UNDER THE FREEDOM OF INFORMATION ACT, 5 U.S.C. SECTION 552.
+# //  FURTHERMORE, THIS INFORMATION IS PROHIBITED FROM DISCLOSURE UNDER
+# //  THE TRADE SECRETS ACT, 18 U.S.C. SECTION 1905.
+# //
+# // NOT FOR CORPORATE OR PRODUCTION USE.
+# // THE ModelSim PE Student Edition IS NOT A SUPPORTED PRODUCT.
+# // FOR HIGHER EDUCATION PURPOSES ONLY
+# //
+# vsim -gui C:\Users\roheu\Documents\Github\Embedded-Systems\Final Projects - 1_pd_SRAM\ShortestPath.mpf 
+# Start time: 16:00:11 on Jul 06,2020
+# Loading work.Testbench
+# Loading work.ShortestPath
+# Loading work.dp_sram_coregen
+# ** Error: (vsim-3033) C:/Users/roheu/Documents/Github/Embedded-Systems/Final Projects - 1_pd_SRAM/dp_sram_coregen.v(128): Instantiation of 'BLKMEMDP_V6_3' failed. The design unit was not found.
+#    Time: 0 ns  Iteration: 0  Instance: /Testbench/L_Memory File: C:/Users/roheu/Documents/Github/Embedded-Systems/Final Projects - 1_pd_SRAM/dp_sram_coregen.v
+#         Searched libraries:
+#             C:/Users/roheu/Documents/Github/Embedded-Systems/Final Projects - 1_pd_SRAM/work
+# ** Error: (vsim-3033) C:/Users/roheu/Documents/Github/Embedded-Systems/Final Projects - 1_pd_SRAM/dp_sram_coregen.v(128): Instantiation of 'BLKMEMDP_V6_3' failed. The design unit was not found.
+#    Time: 0 ns  Iteration: 0  Instance: /Testbench/M_Memory File: C:/Users/roheu/Documents/Github/Embedded-Systems/Final Projects - 1_pd_SRAM/dp_sram_coregen.v
+#         Searched libraries:
+#             C:/Users/roheu/Documents/Github/Embedded-Systems/Final Projects - 1_pd_SRAM/work
+# ** Error: (vsim-3033) C:/Users/roheu/Documents/Github/Embedded-Systems/Final Projects - 1_pd_SRAM/dp_sram_coregen.v(128): Instantiation of 'BLKMEMDP_V6_3' failed. The design unit was not found.
+#    Time: 0 ns  Iteration: 0  Instance: /Testbench/P_Memory File: C:/Users/roheu/Documents/Github/Embedded-Systems/Final Projects - 1_pd_SRAM/dp_sram_coregen.v
+#         Searched libraries:
+#             C:/Users/roheu/Documents/Github/Embedded-Systems/Final Projects - 1_pd_SRAM/work
+# Error loading design
+vsim -gui -L C:/ShortestPath/ise/XilinxCoreLib_ver work.Testbench
+# vsim 
+# Start time: 16:00:32 on Jul 06,2020
+# Loading work.Testbench
+# Loading work.ShortestPath
+# Loading work.dp_sram_coregen
+# Loading C:/ShortestPath/ise/XilinxCoreLib_ver.BLKMEMDP_V6_3
+add wave -r sim:/Testbench/*
+run -all
+# Hardware Succeeded
+# ** Note: $stop    : C:/Users/roheu/Documents/Github/Embedded-Systems/Final Projects - 1_pd_SRAM/TestBench.v(109)
+#    Time: 5652590 ns  Iteration: 1  Instance: /Testbench
+# Break in Module Testbench at C:/Users/roheu/Documents/Github/Embedded-Systems/Final Projects - 1_pd_SRAM/TestBench.v line 109
+# End time: 16:01:42 on Jul 06,2020, Elapsed time: 0:01:10
+# Errors: 0, Warnings: 0

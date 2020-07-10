@@ -1,0 +1,419 @@
+`timescale 1 ns/1 ns
+`define MAX 8192
+`define SIZE_ROW 4
+`define D_WIDTH 8
+`define A_WIDTH 13
+
+module ShortestPath_4(Go, Clk, Rst, L_In, M_In, L_Out, P_Out, M_Addr, L_Addr, P_Addr, 
+				M_En, M_Rw, L_En, L_Rw, P_En, P_Rw, Done);
+	// Inputs
+	input Go;
+	input Clk, Rst;
+
+	// Outputs - handled by Datapath
+	input [(`D_WIDTH - 1):0] L_In, M_In;
+	output reg [(`D_WIDTH - 1):0] L_Out;
+	output reg [(`D_WIDTH - 1):0] P_Out;
+	output reg [(`A_WIDTH - 1):0] M_Addr, L_Addr, P_Addr;
+
+	// Outputs - handled by Controller
+	output reg M_En, M_Rw, L_En, L_Rw, P_En, P_Rw, Done;
+
+	// Datapath Registers
+	reg [(`D_WIDTH - 1):0] M_Reg, L_Reg, L_Temp_Reg, M_RegNext, L_RegNext, L_Temp_RegNext;
+	integer Addr0, Addr1, Addr2, Addr0Next, Addr1Next, Addr2Next;
+	integer I, I_Base, J, INext, I_BaseNext, JNext;
+
+	// Shared Variables 
+	reg I_Base_Became_Max, I_Became_Max, J_Became_Max;
+	reg IJ_Eq_0, I_Eq_0, J_Eq_0;
+	reg Init_J, Init_I, Update_I_Base, Add_I, Add_J;
+	reg WP0S_RM0, WP0R_RM0_RL2, WP0D_RM0_RL1, RL1, RL2, WL0M, WL0ML;
+	reg Update_M_Reg, Update_L_Reg, Update_L_Temp_Reg;
+	reg CompareTwoL, L_Larger;
+
+	// Controller Variables
+	reg [3:0] State, StateNext; 
+
+	// Parameters
+	parameter S0 = 4'b0000, S1 = 4'b0001, S2 = 4'b0010, S3 = 4'b0011,
+		  S4 = 4'b0100, S5 = 4'b0101, S6 = 4'b0110,
+		  S7 = 4'b0111, S8 = 4'b1000, S9 = 4'b1001, S10 = 4'b1010;
+	parameter Start = 8'b0000_1000, Right = 8'b0000_1001, Down = 8'b0000_1010;
+
+	// State Register : Clock Procedure
+	always@(posedge Clk) begin
+		if(Rst == 1'b1) begin
+			// Reset outputs handled by Controller
+			M_En <= 1'b0;
+			M_Rw <= 1'b0;
+			L_En <= 1'b0;
+			L_Rw <= 1'b0;
+			P_En <= 1'b0;
+			P_Rw <= 1'b0;
+			Done <= 1'b0;
+			// Reset control signals
+			Init_J <= 1'b0;
+			Init_I <= 1'b0;
+			Update_I_Base <= 1'b0;
+			Add_I <= 1'b0; 
+			Add_J <= 1'b0;
+	 		WP0S_RM0 <= 1'b0;
+			WP0R_RM0_RL2 <= 1'b0;
+			WP0D_RM0_RL1 <= 1'b0;
+			RL1 <= 1'b0;
+			RL2 <= 1'b0;
+			WL0M <= 1'b0;
+			WL0ML <= 1'b0;
+	 		Update_M_Reg <= 1'b0;
+			Update_L_Reg <= 1'b0;
+			Update_L_Temp_Reg <= 1'b0;
+	 		CompareTwoL <= 1'b0;
+			// Goto S0 at next clock cycle
+			State <= S0;
+		end
+		else begin
+			State <= StateNext;
+		end
+	end
+
+	// Controller : Combinational Logic
+	always @(State) begin
+		
+		// Reset outputs handled by Controller
+		M_En <= 1'b0;
+		M_Rw <= 1'b0;
+		L_En <= 1'b0;
+		L_Rw <= 1'b0;
+		P_En <= 1'b0;
+		P_Rw <= 1'b0;
+		Done <= 1'b0;
+		// Reset control signals
+		Init_J <= 1'b0; 
+		Init_I <= 1'b0; 
+		Update_I_Base <= 1'b0;
+		Add_I <= 1'b0;
+		Add_J <= 1'b0;
+	 	WP0S_RM0 <= 1'b0;
+		WP0R_RM0_RL2 <= 1'b0;
+		WP0D_RM0_RL1 <= 1'b0;
+		RL1 <= 1'b0;
+		RL2 <= 1'b0;
+		WL0M <= 1'b0;
+		WL0ML <= 1'b0;
+	 	Update_M_Reg <= 1'b0;
+		Update_L_Reg <= 1'b0; 
+		Update_L_Temp_Reg <= 1'b0;
+	 	CompareTwoL <= 1'b0;
+
+		case(State)
+			S0: begin // 0
+				if(Go == 1'b1) begin
+					StateNext <= S1;
+				end
+				else begin
+					StateNext <= S0;
+				end
+			end
+			S1: begin // 1
+				if(I_Base <= 100) begin
+					$display("S1: I = %d, J = %d, I_Base = %d", I, J, I_Base);
+				end
+				// I_Base >= `MAX
+				if(I_Base_Became_Max == 1'b1) begin
+					Done <= 1'b1;
+					StateNext <= S0;
+				end				
+				// I_Base + I < I_Base + `SIZE_ROW
+				else if(I_Became_Max == 1'b0) begin
+					Init_J <= 1'b1; // J <= 0
+					StateNext <= S3;
+				end
+				// I_Base + I >= I_Base + `SIZE_ROW
+				else begin
+					Update_I_Base <= 1'b1; // I_BaseNext <= I_Base + I
+					StateNext <= S2;
+				end
+			end
+			S2: begin // 2
+				Init_I <= 1'b1; // I <= 0
+				StateNext <= S1;
+			end
+			S3: begin // 3
+				// J < `SIZE_ROW
+				if(J_Became_Max == 1'b0) begin
+					StateNext <= S4;
+				end
+				// J >= `SIZE_ROW
+				else begin
+					Add_I <= 1'b1; // INext <= I + 1
+					StateNext <= S1;		
+				end
+			end
+			S4: begin // 4
+				// Case1. I == 0 && J == 0
+				if(IJ_Eq_0 == 1'b1) begin
+					WP0S_RM0 <= 1'b1; // Write P with address 0 and data S, Read M with address 0
+					P_En <= 1'b1;
+					P_Rw <= 1'b1; // write P
+					M_En <= 1'b1;
+					M_Rw <= 1'b0; // read M 
+					StateNext <= S5;
+				end
+				// Case2. I == 0
+				else if(I_Eq_0 == 1'b1) begin
+					WP0R_RM0_RL2 <= 1'b1; // Write P with address 0 and data R, Read M with address 0, Read L with address 2
+					P_En <= 1'b1;
+					P_Rw <= 1'b1; // write P
+					M_En <= 1'b1;
+					M_Rw <= 1'b0; // read M				
+					L_En <= 1'b1;
+					L_Rw <= 1'b0; // read L
+					StateNext <= S6;
+				end
+				// Case3. J == 0
+				else if(J_Eq_0 == 1'b1) begin
+					WP0D_RM0_RL1 <= 1'b1; // Write P with address 0 and Data D, Read M with address 0, Read L with address 1
+					P_En <= 1'b1;
+					P_Rw <= 1'b1; // write P
+					M_En <= 1'b1;
+					M_Rw <= 1'b0; // read M			
+					L_En <= 1'b1;
+					L_Rw <= 1'b0; // read L
+					StateNext <= S6;
+				end
+				// Case4. I != 0 && J != 0
+				else begin
+					RL1 <= 1'b1; // Read L with address 1
+					L_En <= 1'b1;
+					L_Rw <= 1'b0; // read L
+					StateNext <= S7;
+				end
+			end
+			// Case1. I == 0 && J == 0
+			S5: begin // 5
+				Update_M_Reg <= 1'b1; // M_RegNext <= M_In
+				Add_J <= 1'b1; // J <= J + 1
+				WL0M <= 1'b1; // Write L with address 0 and Data in M_Reg
+				L_En <= 1'b1;
+				L_Rw <= 1'b1; // write L
+				StateNext <= S3;
+			end
+			S6: begin // 7
+				Update_M_Reg <= 1'b1; // M_RegNext <= M_In
+				Update_L_Reg <= 1'b1; // L_RegNext <= L_In				
+				Add_J <= 1'b1; // J <= J + 1
+				WL0ML <= 1'b1; // Write L with address 0, with (Data in M_Reg) + (Data in L_Reg)
+				L_En <= 1'b1;
+				L_Rw <= 1'b1; // write L
+				StateNext <= S3;
+			end
+			S7: begin // 9
+				Update_L_Reg <= 1'b1; // L_RegNext <= L_In
+				RL2 <= 1'b1; // Read L with address 2
+				L_En <= 1'b1;
+				L_Rw <= 1'b0; // read L
+				StateNext <= S8;
+			end
+			S8: begin // 10
+				Update_L_Temp_Reg <= 1'b1; // L_Temp_RegNext <= L_In
+				StateNext <= S9; 
+			end
+			S9: begin // 11
+				CompareTwoL <= 1'b1;
+				StateNext <= S10;
+			end
+			S10: begin // 12
+				// L_Reg < L_Temp_Reg
+				if(L_Larger == 1'b0) begin
+					WP0D_RM0_RL1 <= 1'b1;
+					P_En <= 1'b1;
+					P_Rw <= 1'b1; // write P
+					M_En <= 1'b1;
+					M_Rw <= 1'b0; // read M 		
+					L_En <= 1'b1;
+					L_Rw <= 1'b0; // read L 
+					StateNext <= S6;
+				end
+				// L_Reg >= L_Temp_Reg
+				else begin
+					WP0R_RM0_RL2 <= 1'b1;
+					P_En <= 1'b1;
+					P_Rw <= 1'b1; // write P
+					M_En <= 1'b1;
+					M_Rw <= 1'b0; // read M			
+					L_En <= 1'b1;
+					L_Rw <= 1'b0; // read L			
+					StateNext <= S6;
+				end
+			end
+		endcase
+	end
+
+	// Datapath Register
+	always@(posedge Clk) begin
+		if(Rst == 1'b1) begin
+			// Reset outputs handled by Datapath
+			L_Out <= {`D_WIDTH{1'b0}}; 
+			P_Out <= {`D_WIDTH{1'b0}}; 
+			M_Addr <= {`A_WIDTH{1'b0}};
+			L_Addr <= {`A_WIDTH{1'b0}};
+			P_Addr <= {`A_WIDTH{1'b0}};
+			// Reset datapath Variables
+			M_Reg <= {`D_WIDTH{1'b0}};
+			L_Reg <= {`D_WIDTH{1'b0}};
+			L_Temp_Reg <={`D_WIDTH{1'b0}};
+			M_RegNext <= {`D_WIDTH{1'b0}};
+			L_RegNext <= {`D_WIDTH{1'b0}};
+			L_Temp_RegNext <={`D_WIDTH{1'b0}};
+			I <= 1'b0; 
+			J <= 1'b0;
+			I_Base <= 1'b0;
+			INext <= 1'b0; 
+			JNext <= 1'b0;
+			I_BaseNext <= 1'b0;
+			Addr0 <= 1'b0;
+			Addr1 <= 1'b0;
+			Addr2 <= 1'b0;
+			Addr0Next <= 1'b0;
+			Addr1Next <= 1'b0;
+			Addr2Next <= 1'b0;
+			// Reset shared Variables
+			I_Base_Became_Max <= 1'b0;
+			I_Became_Max <= 1'b0;
+			J_Became_Max <= 1'b0;
+			IJ_Eq_0 <= 1'b0;
+			I_Eq_0 <= 1'b0;
+			J_Eq_0 <= 1'b0;
+			L_Larger <= 1'b0;
+		end	
+		else begin
+			M_Reg <= M_RegNext;
+			L_Reg <= L_RegNext;
+			L_Temp_Reg <= L_Temp_RegNext;
+			Addr0 <= Addr0Next;
+			Addr1 <= Addr1Next;
+			Addr2 <= Addr2Next;
+			I <= INext;
+			I_Base <= I_BaseNext;
+			J <= JNext;
+			// Calculate Addr0, Addr1, Addr2
+			Addr0Next <= (I_Base + I) * `SIZE_ROW + J;
+			Addr1Next <= (I_Base + I - 1) * `SIZE_ROW + J;
+			Addr2Next <= (I_Base + I) * `SIZE_ROW + (J - 1); 
+		end
+
+		// Status regarding I, I_Base
+		if(I_Base >= `MAX) begin
+			I_Base_Became_Max <= 1'b1;
+		end
+		else if(I_Base + I < I_Base + `SIZE_ROW) begin
+			I_Became_Max <= 1'b0;
+		end
+		else begin
+			I_Became_Max <= 1'b1;
+		end
+		// Status regarding J
+		if(J < `SIZE_ROW) begin
+			J_Became_Max <= 1'b0;
+		end
+		else begin
+			J_Became_Max <= 1'b1;
+		end
+		// Status regarding I, J
+		if(I == 0 && J == 0) begin
+			IJ_Eq_0 <= 1'b1;
+		end
+		else if(I == 0) begin
+			IJ_Eq_0 <= 1'b0;
+			I_Eq_0 <= 1'b1;
+			J_Eq_0 <= 1'b0;
+		end
+		else if(J == 0) begin
+			IJ_Eq_0 <= 1'b0;
+			I_Eq_0 <= 1'b0;
+			J_Eq_0 <= 1'b1;
+		end
+		else begin
+			IJ_Eq_0 <= 1'b0;
+			I_Eq_0 <= 1'b0;
+			J_Eq_0 <= 1'b0;
+		end
+	end
+	
+	// Datapath Combinational Logic
+	always @(Init_J, Init_I, Update_I_Base, Add_I, Add_J, Update_M_Reg, Update_L_Reg, Update_L_Temp_Reg, WP0S_RM0, WP0R_RM0_RL2, WP0D_RM0_RL1,
+			RL1, RL2, WL0M, WL0ML, CompareTwoL) begin
+
+		// Executions regarding I, J, I_Base Registers
+		if(Init_J == 1'b1) begin
+			JNext <= 0;
+		end
+		if(Init_I == 1'b1) begin
+			INext <= 0;
+		end
+		if(Update_I_Base == 1'b1) begin
+			I_BaseNext <= I_Base + I;
+		end
+		if(Add_I == 1'b1) begin
+			INext <= I + 1;
+		end
+		if(Add_J == 1'b1) begin
+			JNext <= J + 1;
+		end
+
+		// Executions regarding M, L, L_Temp Registers
+		if(Update_M_Reg == 1'b1) begin
+			M_RegNext <= M_In;
+		end
+		if(Update_L_Reg == 1'b1) begin
+			L_RegNext <= L_In;
+		end
+
+		if(Update_L_Temp_Reg == 1'b1) begin
+			L_Temp_RegNext <= L_In;
+		end
+
+		// Executions initiated by Controller
+		if(WP0S_RM0 == 1'b1) begin
+			P_Out <= Start;
+			P_Addr <= Addr0;
+			M_Addr <= Addr0;	
+		end
+		else if(WP0R_RM0_RL2 == 1'b1) begin
+			P_Out <= Right;
+			P_Addr <= Addr0;
+			M_Addr <= Addr0;		
+			L_Addr <= Addr2;	
+		end
+		else if(WP0D_RM0_RL1 == 1'b1) begin
+			P_Out <= Down;
+			P_Addr <= Addr0;
+			M_Addr <= Addr0;		
+			L_Addr <= Addr1;	
+		end
+		else if(RL1 == 1'b1) begin
+			L_Addr <= Addr1;
+		end
+		else if(RL2 == 1'b1) begin
+			L_Addr <= Addr2;
+		end
+		else if(WL0M == 1'b1) begin
+			L_Out <= M_Reg;
+			L_Addr <= Addr0;
+		end
+		else if(WL0ML == 1'b1) begin
+			L_Out <= M_Reg + L_Reg;
+			L_Addr <= Addr0;
+		end
+		else if(CompareTwoL == 1'b1) begin
+			if(L_Reg > L_Temp_Reg) begin
+				L_Larger <= 1'b1;
+			end
+			else begin
+				L_Larger <= 1'b0;
+			end
+		end
+	end
+
+endmodule

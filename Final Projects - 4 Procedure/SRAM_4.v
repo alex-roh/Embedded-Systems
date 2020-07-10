@@ -1,5 +1,5 @@
 `timescale 1 ns/1 ns
-`define A_WIDTH 16
+`define A_WIDTH 13
 `define D_WIDTH 8
 
 module SRAM_Memory(Data_In, Data_Out, Addr, RW, En, Clk, Rst);

@@ -1,5 +1,5 @@
 `timescale 1 ns/1 ns
-`define A_WIDTH 12
+`define A_WIDTH 13
 `define D_WIDTH 8
 
 module Testbench();
@@ -12,6 +12,7 @@ module Testbench();
 	wire [(`A_WIDTH - 1):0] M_Addr_s, L_Addr_s, P_Addr_s;
 	wire M_En_s, M_Rw_s, L_En_s, L_Rw_s, P_En_s, P_Rw_s, Done_s;
 	integer Index;
+	reg Error_Flag;
 	reg [(`D_WIDTH-1):0] Ref [0:(2**`A_WIDTH-1)];
 
 	ShortestPath_4 CompToTest(Go_s, Clk_s, Rst_s, L_In_s, M_In_s,
@@ -37,6 +38,7 @@ module Testbench();
 	// Vector Procedure
 	initial begin
 		// reset L, P, and Module, and do not reset M
+		Error_Flag <= 1'b0;
 		Rst_s <= 1'b1;
 		Go_s <= 1'b0; // don't start Module here
 		Rst_m <= 1'b0;
@@ -52,8 +54,15 @@ module Testbench();
 		// check results
 		for(Index=0;Index<(2**`A_WIDTH);Index=Index+1) begin
 			if(P_Memory.Memory[Index] != Ref[Index]) begin
+				Error_Flag <= 1'b1;
 				#5; $display("%d. failed with : %x from HW -- should equal to %x from SW.", Index, P_Memory.Memory[Index], Ref[Index]);
 			end
+		end
+		if(Error_Flag == 1'b1) begin
+			$display("Hardware Failed");
+		end
+		else begin
+			$display("Hardware Succeeded");
 		end
 		$stop;
 	end

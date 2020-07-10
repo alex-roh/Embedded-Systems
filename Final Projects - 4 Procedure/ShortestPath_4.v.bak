@@ -1,8 +1,8 @@
 `timescale 1 ns/1 ns
-`define MAX 1024
+`define MAX 8192
 `define SIZE_ROW 4
 `define D_WIDTH 8
-`define A_WIDTH 12
+`define A_WIDTH 13
 
 module ShortestPath_4(Go, Clk, Rst, L_In, M_In, L_Out, P_Out, M_Addr, L_Addr, P_Addr, 
 				M_En, M_Rw, L_En, L_Rw, P_En, P_Rw, Done);
@@ -171,6 +171,9 @@ module ShortestPath_4(Go, Clk, Rst, L_In, M_In, L_Out, P_Out, M_Addr, L_Addr, P_
 				StateNext <= S4a;
 			end
 			S4a: begin
+				if(I_Base < 100) begin
+					$display("S4a: I_Base = %d, L_Reg = %x", I_Base, L_Reg);
+				end
 				L_Out <= L_Reg;
 				L_En <= 1'b1;
 				L_Rw <= 1'b1; // write L
@@ -184,6 +187,9 @@ module ShortestPath_4(Go, Clk, Rst, L_In, M_In, L_Out, P_Out, M_Addr, L_Addr, P_
 				StateNext <= S5a;
 			end
 			S5a: begin
+				if(I_Base < 100) begin
+					$display("S5a: I_Base = %d, L_Reg = %x, M_Reg = %x", I_Base, L_Reg, M_Reg);
+				end
 				L_Out <= M_Reg + L_Reg;
 				L_En <= 1'b1;
 				L_Rw <= 1'b1; // write L
@@ -203,6 +209,9 @@ module ShortestPath_4(Go, Clk, Rst, L_In, M_In, L_Out, P_Out, M_Addr, L_Addr, P_
 				StateNext <= S7;
 			end
 			S7: begin
+				if(I_Base < 100) begin
+					$display("S7: I_Base = %d, L_Reg = %x, L_Temp_Reg = %x", I_Base, L_Reg, L_Temp_Reg);
+				end
 				if(L_Reg < L_Temp_Reg) begin
 					P_Out <= Down;
 					P_En <= 1'b1;

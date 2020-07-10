@@ -1,8 +1,8 @@
 `timescale 1 ns/1 ns
-`define MAX 65536
+`define MAX 8192
 `define SIZE_ROW 4
 `define D_WIDTH 8
-`define A_WIDTH 16
+`define A_WIDTH 13
 
 module ShortestPath_4(Go, Clk, Rst, L_In, M_In, L_Out, P_Out, M_Addr, L_Addr, P_Addr, 
 				M_En, M_Rw, L_En, L_Rw, P_En, P_Rw, Done);
@@ -167,11 +167,11 @@ module ShortestPath_4(Go, Clk, Rst, L_In, M_In, L_Out, P_Out, M_Addr, L_Addr, P_
 				end
 			end
 			S4: begin
-				L_Reg <= M_In;
+				M_Reg <= M_In;
 				StateNext <= S4a;
 			end
 			S4a: begin
-				L_Out <= L_Reg;
+				L_Out <= M_Reg;
 				L_En <= 1'b1;
 				L_Rw <= 1'b1; // write L
 				L_Addr <= Addr0;
@@ -229,10 +229,6 @@ module ShortestPath_4(Go, Clk, Rst, L_In, M_In, L_Out, P_Out, M_Addr, L_Addr, P_
 					L_Addr <= Addr2;				
 					StateNext <= S5;
 				end	
-			end
-			default: begin
-				$display("Fatal Error Occurred!");
-				$stop;
 			end
 		endcase
 	end

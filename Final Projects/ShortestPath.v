@@ -1,8 +1,8 @@
 `timescale 1 ns/1 ns
-`define MAX 65536
+`define MAX 8192
 `define SIZE_ROW 4
 `define D_WIDTH 8
-`define A_WIDTH 16
+`define A_WIDTH 13
 
 module ShortestPath(Go, Clk, Rst, L_In, M_In, L_Out, P_Out, M_Addr, L_Addr, P_Addr, 
 				M_En, M_Rw, L_En, L_Rw, P_En, P_Rw, Done);
@@ -70,7 +70,7 @@ module ShortestPath(Go, Clk, Rst, L_In, M_In, L_Out, P_Out, M_Addr, L_Addr, P_Ad
 			
 			case(State)
 				// Initial State
-				S0: begin
+				S0: begin // 0
 					if(Go == 1'b1) begin
 						State <= S1;
 					end
@@ -79,7 +79,10 @@ module ShortestPath(Go, Clk, Rst, L_In, M_In, L_Out, P_Out, M_Addr, L_Addr, P_Ad
 					end
 				end
 				// I loop
-				S1: begin
+				S1: begin // 1
+					if(I_Base <= 100) begin
+						$display("S1: I : %d, J : %d, I_Base = %d", I, J, I_Base);
+					end
 					if(I_Base >= `MAX) begin
 						// algorithm ended
 						Done <= 1'b1;
@@ -95,7 +98,7 @@ module ShortestPath(Go, Clk, Rst, L_In, M_In, L_Out, P_Out, M_Addr, L_Addr, P_Ad
 						State <= S1;
 					end
 				end
-				S2: begin
+				S2: begin // 2
 					// Inside of J loop
 					if(J < `SIZE_ROW) begin
 						Addr0 <= (I_Base + I) * `SIZE_ROW + J;
@@ -108,7 +111,7 @@ module ShortestPath(Go, Clk, Rst, L_In, M_In, L_Out, P_Out, M_Addr, L_Addr, P_Ad
 						State <= S1;
 					end
 				end
-				S3: begin
+				S3: begin // 3
 					if(I == 0 && J == 0) begin
 						// prepare to write output memory P
 						P_Out <= Start;
@@ -162,16 +165,16 @@ module ShortestPath(Go, Clk, Rst, L_In, M_In, L_Out, P_Out, M_Addr, L_Addr, P_Ad
 					end
 				end
 				// i == 0 && j == 0
-				S4a: begin
+				S4a: begin // 4
 					// input memory M will be ready in one state
 					State <= S4b;	
 				end
-				S4b: begin
+				S4b: begin // 5
 					// M_reg will be ready in one state
 					M_Reg <= M_In;	
 					State <= S4c;
 				end
-				S4c: begin
+				S4c: begin // 6
 					// prepare to write in/out memory L
 					L_Out <= M_Reg;
 					L_En <= 1'b1;
@@ -182,18 +185,18 @@ module ShortestPath(Go, Clk, Rst, L_In, M_In, L_Out, P_Out, M_Addr, L_Addr, P_Ad
 					State <= S2;
 				end
 				// i == 0 || j == 0
-				S5a: begin
+				S5a: begin // 7
 					// output memory P will be ready in one state
 					// input memory M will be ready in one state
 					// in/out memory L will be ready in one state
 					State <= S5b;		
 				end
-				S5b: begin
+				S5b: begin // 8
 					M_Reg <= M_In;	
 					L_Reg <= L_In;
 					State <= S5c;	
 				end
-				S5c: begin
+				S5c: begin // 9
 					// prepare to write in/out memory L
 					L_Out <= M_Reg + L_Reg;
 					L_En <= 1'b1;
@@ -204,11 +207,11 @@ module ShortestPath(Go, Clk, Rst, L_In, M_In, L_Out, P_Out, M_Addr, L_Addr, P_Ad
 					State <= S2;
 				end
 				// else : preparation
-				S6a: begin
+				S6a: begin // 10
 					// in/out memory L will be ready in one state	
 					State <= S6b;	
 				end
-				S6b: begin
+				S6b: begin // 11
 					L_Reg <= L_In;
 					// prepare to read in/out memory L
 					L_En <= 1'b1;
@@ -216,15 +219,15 @@ module ShortestPath(Go, Clk, Rst, L_In, M_In, L_Out, P_Out, M_Addr, L_Addr, P_Ad
 					L_Addr <= Addr2;				
 					State <= S6c;		
 				end
-				S6c: begin
+				S6c: begin // 12
 					State <= S6d;
 				end
-				S6d: begin
+				S6d: begin // 13
 					L_Temp_Reg <= L_In;
 					State <= S7;
 				end
 				// else : starts
-				S7: begin
+				S7: begin // 14
 					if(L_Reg < L_Temp_Reg) begin
 						// prepare to write output memory P
 						P_Out <= Down;
